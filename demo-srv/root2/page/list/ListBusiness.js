@@ -23,7 +23,7 @@ function ListBusiness() {// 'closure|module'-iso.
             //if (1==1) return
 			sb.siteListDao.selectList().then(function(values) {
 
-                    console.log('got data')
+                    console.log('got data'+values)
                     var comp = document.querySelector(componentName) //good if only one
                     console.log('got component'+comp)
                     comp.list(values)

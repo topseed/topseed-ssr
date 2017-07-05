@@ -26,8 +26,14 @@ function pugComp(req,res) {
 	console.log('requested:'+requestedResource )
 	res.header('Content-Type', 'text/html')
 	U.cacheQuick(res)
-	const html = pug.renderFile(requestedResource, options)
-	res.status(200).send( html).end()
+	if (fs.existsSync(requestedResource)) {
+		const html = pug.renderFile(requestedResource, options)
+		res.status(200).send( html).end()
+	} else {
+		fs.readFile(pgPath, 'utf8', function(err, data) {
+			res.send(data).end()
+		})
+	}
 }
 
 //**************** */

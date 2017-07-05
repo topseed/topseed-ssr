@@ -1,2 +1,2 @@
-# topseed-webcomps
-Some standard web components 
+# topseed-polymer
+Google Polymer components 
