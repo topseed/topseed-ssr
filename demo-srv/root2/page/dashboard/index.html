@@ -70,8 +70,8 @@
         
         	Promise.all([
         		TS.load('/page/list/ListBusiness.js')
-        		, TW.loadComp('https://rawgit.com/topseed/topseed-polymer/master/_sharedComps/circle.html', $('#comps'))
-        		, TW.loadComp('https://rawgit.com/topseed/topseed-polymer/master/_sharedComps/gauge.html', $('#comps'))
+        		, TP.loadComp('https://rawgit.com/topseed/topseed-polymer/master/_sharedComps/circle.html')
+        		, TP.loadComp('https://rawgit.com/topseed/topseed-polymer/master/_sharedComps/gauge.html')
         		, TP.loadComp('/_polymerComp/List.html')
         	]).then(function(){
         		const sb = ListBusiness()
@@ -88,7 +88,6 @@
       <div id="footer_div"><a href="https://gitter.im/topseed/Lobby" target="_blank">Forum </a>
         <div id="footer_div--right"><a href="https://github.com/topseed/topseed" target="_blank">Kitchen Sink</a></div>
       </div>
-      <div id="comps"></div>
     </div>
   </body>
 </html>

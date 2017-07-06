@@ -54,12 +54,11 @@
         TS.onAppReady(loadComps)
         
         function UIInit() {
-        	TW.registerComp('gauge-el', GaugeEl)
         	console.log('.')
         }
         
         function loadComps() {
-        	TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps/gauge.html', $('#comps')).then(UIInit)
+        	TP.loadComp('https://rawgit.com/topseed/topseed-polymer/master/_sharedComps/gauge.html').then(UIInit)
         }
         
       </script>
@@ -68,7 +67,6 @@
       <div id="footer_div"><a href="https://gitter.im/topseed/Lobby" target="_blank">Forum </a>
         <div id="footer_div--right"><a href="https://github.com/topseed/topseed" target="_blank">Kitchen Sink</a></div>
       </div>
-      <div id="comps"></div>
     </div>
   </body>
 </html>

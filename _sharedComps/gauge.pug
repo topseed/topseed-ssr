@@ -16,6 +16,7 @@ dom-module(id='gauge-el')
 			constructor() {
 				super()
 				gaugeEl = this
+				console.log('GaugeEl.constructor')
 				Promise.all([
 					TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
 					TS.load('https://cdn.rawgit.com/topseed/topseed-polymer/master/_sharedComps/vendor/justgage.js')
@@ -24,9 +25,9 @@ dom-module(id='gauge-el')
 			loadedLib() {
 				if (gaugeEl._loaded) return
 				gaugeEl._loaded = true
-				console.log('GaugeEl loaded')
+				console.log('GaugeEl.loadedLib')
 
-				var c = gaugeEl.$.gauge1
+				var c = gaugeEl.$.gauge1 //access shadow dom
 				gaugeEl.g = new JustGage({ //implementation instance
 					parentNode : c,
 					value: 67, 

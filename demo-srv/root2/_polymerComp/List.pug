@@ -10,14 +10,16 @@ dom-module(id='list-el')
 					li
 						a(on-click='nav') {{item.head_line}}
 	script.
-		// Define the class for a new element called list-el
+
 		class ListEl extends Polymer.Element {
 			static get is() { return 'list-el' }
 			constructor() {
 				super()
+				console.log('ListEl.constructor')
 			}
 			init(_blx) {
 				this.blx = _blx 
+				console.log('ListEl.init')
 			}
 			list(values) {
 				this.set('array', values)

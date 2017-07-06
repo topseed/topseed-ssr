@@ -14,6 +14,7 @@ dom-module(id='circle-el')
 			static get is() { return 'circle-el' }
 			constructor() {
 				super()
+				console.log('CircleEl.constructor')
 				circleEl = this
 				TS.load('https://cdn.rawgit.com/topseed/topseed-polymer/master/_sharedComps/vendor/circlesMOD.js')
 				.then(circleEl.loadedLib)
@@ -21,9 +22,8 @@ dom-module(id='circle-el')
 			loadedLib() {
 				if (circleEl._loaded) return
 				circleEl._loaded = true
-				console.log('loaded')
-				//TODO
-				var c = circleEl.$.c1 //getElementById('c1')
+				console.log('circleEl.loadedlib')
+				var c = circleEl.$.c1 //access shadow dom
 				circleEl.circle = Circles.create({
 					el:                  c,
 					radius:              60,
