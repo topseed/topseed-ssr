@@ -1,57 +1,45 @@
-template#xgauge-el
-	style.
-		.bgauge-el span { color: orange; }
-	.bgauge-el
-		span My Gauge Title (Shadow DOM)
-		p
-		div
-			#gauge1
+dom-module(id='gauge-el')
+	template
+		style.
+			.bgauge-el span { color: orange; }
+		.bgauge-el
+			span My Gauge Title (Shadow DOM)
+			p
+			div
+				#gauge1
 
-//http://justgage.com/ 
-script.
-	var GaugeEl = Object.create(HTMLElement.prototype)  //prototype
-	var gaugeEl = null //instance, to keep state
+	//http://justgage.com/ 
+	script.
+		var gaugeEl //instance
+		class GaugeEl extends Polymer.Element {
+			static get is() { return 'gauge-el' }
+			constructor() {
+				super()
+				gaugeEl = this
+				Promise.all([
+					TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
+					TS.load('https://cdn.rawgit.com/topseed/topseed-polymer/master/_sharedComps/vendor/justgage.js')
+				]).then(gaugeEl.loadedLib)
+			}
+			loadedLib() {
+				if (gaugeEl._loaded) return
+				gaugeEl._loaded = true
+				console.log('GaugeEl loaded')
 
-	registerComp = function(){
-		TW.registerComp('gauge-el', GaugeEl)
-	}
+				var c = $('#gauge1', gaugeEl._shadow)[0]
+				gaugeEl.g = new JustGage({ //implementation instance
+					parentNode : c,
+					value: 67, 
+					min: 0,
+					max: 100,
+					title: 'Visitors'
+				})
+			}//loaded
+			init(_blx) {
+				_blx.on('mySelection', function(data) { 
+					gaugeEl.g.refresh(data.gaugeVal)
+				})
+			}
+		}
 
-	GaugeEl.loadedLib = function() {
-		if (gaugeEl._loaded) return
-		gaugeEl._loaded = true
-		console.log('GaugeEl loaded')
-
-		var c = $('#gauge1', gaugeEl._shadow)[0]
-		gaugeEl.g = new JustGage({ //implementation instance
-			parentNode : c,
-			value: 67, 
-			min: 0,
-			max: 100,
-			title: 'Visitors'
-		})
-	}//loaded
-
-	GaugeEl.createdCallback = function() {
-		gaugeEl = this
-		gaugeEl._shadow = TW.attachShadow(gaugeEl, '#xgauge-el')
-		gaugeEl._loaded = false //trap
-		//gaugeEl.blx = null //message bus to broadcast to
-
-		Promise.all([
-			TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
-			TS.load('https://cdn.rawgit.com/topseed/topseed-webcomps/master/_sharedComps/vendor/justgage.js')
-		]).then(gaugeEl.loadedLib)
-		
-	}//created
-
-	GaugeEl.init = function(_blx) {
-		//gaugeEl.blx = _blx //for outgoing only
-		//listen 
-		_blx.on('mySelection', function(data) { 
-			gaugeEl.g.refresh(data.gaugeVal)
-		})
-		//same as:
-		/*flyd.on(function(data) { 
-				gaugeEl.g.refresh(data.gaugeVal)
-		}, _blx.observer('mySelection'))*/
-	}
+		customElements.define(GaugeEl.is, GaugeEl);	
