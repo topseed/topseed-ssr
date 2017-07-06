@@ -1,37 +1,37 @@
 dom-module(id='list-el')
-    template
-        style.
-            .blist-el span, .blist-el li { color: orange; }
-            .blist-el a { cursor: pointer; color: #2196F3}
-        .blist-el
-            span My Polymer List
-            ul
-                template(is='dom-repeat', items='[[array]]')
-                    li
-                        a(on-click='nav') {{item.head_line}}
-    script.
-        // Define the class for a new element called list-el
-        class ListEl extends Polymer.Element {
-            static get is() { return 'list-el' }
-            constructor() {
-                super()
-            }
-            init(_blx) {
-                this.blx = _blx 
-            }
-            list(values) {
-                this.set('array', values)
-            }
-            nav(e){
-                if (this.blx != null) //blx not required when component doesn't broadcast
-                {
-                    this.blx.emit('mySelection', e.model.item)
-                }
-                else 
-                    window.open(e.model.item.url, "_blank")
-                return false		
-            }
-        }
-        
-        // Register the new element with the browser
-        customElements.define(ListEl.is, ListEl);
+	template
+		style.
+			.blist-el span, .blist-el li { color: orange; }
+			.blist-el a { cursor: pointer; color: #2196F3}
+		.blist-el
+			span My Polymer List
+			ul
+				template(is='dom-repeat', items='[[array]]')
+					li
+						a(on-click='nav') {{item.head_line}}
+	script.
+		// Define the class for a new element called list-el
+		class ListEl extends Polymer.Element {
+			static get is() { return 'list-el' }
+			constructor() {
+				super()
+			}
+			init(_blx) {
+				this.blx = _blx 
+			}
+			list(values) {
+				this.set('array', values)
+			}
+			nav(e){
+				if (this.blx != null) //blx not required when component doesn't broadcast
+				{
+					this.blx.emit('mySelection', e.model.item)
+				}
+				else 
+					window.open(e.model.item.url, "_blank")
+				return false		
+			}
+		}
+		
+		// Register the new element with the browser
+		customElements.define(ListEl.is, ListEl);
