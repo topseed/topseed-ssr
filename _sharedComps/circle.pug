@@ -11,18 +11,20 @@ dom-module(id='circle-el')
 	script.
 		class CircleEl extends Polymer.Element {
 			static get is() { return 'circle-el' }
+			var circleEl
 			constructor() {
 				super()
+				circleEl = this
 				TS.load('https://cdn.rawgit.com/topseed/topseed-polymer/master/_sharedComps/vendor/circlesMOD.js')
-				.then(this.loadedLib)
+				.then(circleEl.loadedLib)
 			}
 			loadedLib() {
-				if (this._loaded) return
-				this._loaded = true
+				if (circleEl._loaded) return
+				circleEl._loaded = true
 				console.log('loaded')
 				//TODO
-				var c = this.getElementById('c1')
-				this.circle = Circles.create({
+				var c = circleEl.getElementById('c1')
+				circleEl.circle = Circles.create({
 					el:                  c,
 					radius:              60,
 					value:               42,
@@ -41,7 +43,7 @@ dom-module(id='circle-el')
 			}
 			init(_blx) {
 				_blx.on('mySelection', function(data) { //incoming
-					this.circle.update(data.circleVal)
+					circleEl.circle.update(data.circleVal)
 				})
 			}	
 		}
