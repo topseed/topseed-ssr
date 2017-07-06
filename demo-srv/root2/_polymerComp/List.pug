@@ -4,11 +4,11 @@ dom-module(id='list-el')
             .blist-el span, .blist-el li { color: orange; }
             .blist-el a { cursor: pointer; color: #2196F3}
         .blist-el
-            span My List Title
+            span My Polymer List
             ul
                 template(is='dom-repeat', items='[[array]]')
                     li
-                        a(onclick="return thisEl.nav('{{item.url}}','{{item.circleVal}}','{{item.gaugeVal}}')") {{item.head_line}}
+                        a(on-click='nav') {{item.head_line}}
     script.
         // Define the class for a new element called list-el
         class ListEl extends Polymer.Element {
@@ -22,17 +22,16 @@ dom-module(id='list-el')
             list(values) {
                 this.set('array', values)
             }
-            nav(url, circleVal, gaugeVal){
-                console.log('listEl.nav')
+            nav(e){
                 if (this.blx != null) //blx not required when component doesn't broadcast
                 {
-                    console.log('listEl.nav blx not null')
-                    this.blx.emit('mySelection', {"circleVal": circleVal, "gaugeVal": gaugeVal})
+                    this.blx.emit('mySelection', e.model.item)
                 }
                 else 
-                    window.open(url, "_blank")
+                    window.open(e.model.item.url, "_blank")
                 return false		
             }
         }
+        
         // Register the new element with the browser
         customElements.define(ListEl.is, ListEl);

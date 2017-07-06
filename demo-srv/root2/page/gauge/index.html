@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>List component</title>
+    <title>Gauge component</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,25 +44,23 @@
     </script>
     <div id="content-wrapper">
       <div class="mui-container-fluid">
-        <p></p>
-        <p>List as component:</p>
-        <list-el>loading...</list-el>
+        <div class="mui-col-xs-12 mui-col-md-6">
+          <p></p>
+          <P>Gauge component:</P>
+          <gauge-el></gauge-el>
+        </div>
       </div>
       <script>
-        TS.loadOnAppReady('/page/list/ListBusiness.js', loadComps) 
+        TS.onAppReady(loadComps)
         
-        function UIinit() { 
-        	
-        	const sb = ListBusiness()
-        	//sb.addComp('list-el') //if component communicates
-        	sb.compList('list-el')
-        }//()
+        function UIInit() {
+        	TW.registerComp('gauge-el', GaugeEl)
+        	console.log('.')
+        }
         
         function loadComps() {
-        	TP.loadComp('/_polymerComp/List.html').then(UIinit)
-        }//()
-        
-        
+        	TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps/gauge.html', $('#comps')).then(UIInit)
+        }
         
       </script>
     </div>

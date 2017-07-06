@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>List component</title>
+    <title>Prelist</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,24 +45,26 @@
     <div id="content-wrapper">
       <div class="mui-container-fluid">
         <p></p>
-        <p>List as component:</p>
-        <list-el>loading...</list-el>
+        <p>No-component list:</p>
+        <p>My List Title</p>
+        <div id="myList"></div>
       </div>
+      <script id="MyListTemplate" type="text/x-dot-template">
+        <ul>
+        {{~it.array :value:index}}
+        	<li><a href="{{=value.url}}" target="_blank">{{=value.head_line}}</a></li>
+        {{~}}
+        </ul>	
+      </script>
       <script>
-        TS.loadOnAppReady('/page/list/ListBusiness.js', loadComps) 
+        TS.loadOnAppReady('/page/list/ListBusiness.js', UIinit) 
         
-        function UIinit() { 
-        	
+        function UIinit() {
+        
         	const sb = ListBusiness()
-        	//sb.addComp('list-el') //if component communicates
-        	sb.compList('list-el')
+        	sb.list('myList', 'MyListTemplate')
+        
         }//()
-        
-        function loadComps() {
-        	TP.loadComp('/_polymerComp/List.html').then(UIinit)
-        }//()
-        
-        
         
       </script>
     </div>

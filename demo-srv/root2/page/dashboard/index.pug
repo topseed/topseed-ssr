@@ -28,7 +28,7 @@ block main
 				TS.load('/page/list/ListBusiness.js')
 				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps/circle.html', $('#comps'))
 				, TW.loadComp('https://rawgit.com/topseed/topseed-webcomps/master/_sharedComps/gauge.html', $('#comps'))
-				, TW.loadComp('/_webComp/List.html', $('#comps'))
+				, TP.loadComp('/_polymerComp/List.html')
 			]).then(function(){
 				const sb = ListBusiness()
 				sb.addComp('circle-el') //for communication
