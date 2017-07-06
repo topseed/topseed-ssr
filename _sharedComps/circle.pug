@@ -23,7 +23,7 @@ dom-module(id='circle-el')
 				circleEl._loaded = true
 				console.log('loaded')
 				//TODO
-				var c = circleEl.getElementById('c1')
+				var c = circleEl.$.c1 //getElementById('c1')
 				circleEl.circle = Circles.create({
 					el:                  c,
 					radius:              60,
