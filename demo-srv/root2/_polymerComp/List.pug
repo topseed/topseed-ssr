@@ -15,14 +15,13 @@ dom-module(id='list-el')
 			static get is() { return 'list-el' }
 			constructor() {
 				super()
-				console.log('ListEl.constructor')
 			}
 			init(_blx) {
 				this.blx = _blx 
 				console.log('ListEl.init')
 			}
 			list(values) {
-				this.set('array', values)
+				this.array = values
 			}
 			nav(e){
 				if (this.blx != null) //blx not required when component doesn't broadcast
@@ -34,6 +33,6 @@ dom-module(id='list-el')
 				return false		
 			}
 		}
-		
 		// Register the new element with the browser
 		customElements.define(ListEl.is, ListEl);
+

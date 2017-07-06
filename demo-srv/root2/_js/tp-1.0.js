@@ -24,16 +24,20 @@ var TP = { //class:
 					console.log('loading (again?):', url)
 					
 					//add component to head tag
-					var el = document.createElement('link')
+					/*var el = document.createElement('link')
 					el.href = url
 					el.rel = 'import'
-					window.document['head'].appendChild(el)
+					window.document['head'].appendChild(el)*/
+					Polymer.importHref(url, function() {
+						console.log('importHref done')
+						return resolve('OK')
+					})
 
 					//$here.append(txt)
 					//generic register, component must implement
 					//registerComp()
-					console.log('loading (again?)2!')
-					resolve("OK")
+					//console.log('loading (again?)2!')
+					//resolve("OK")
 				})	
 			}
 		})	
@@ -105,8 +109,6 @@ var TP = { //class:
 	}
 
 	, init: function(){
-		return Promise.all([
-			TP.loadIE(), TP.loadNotChrome()
-		])
+		return Promise.resolve('ok') //TP.loadComp('/bower_components/polymer/polymer.html')
 	}*/
 }
