@@ -23,11 +23,6 @@ var TP = { //class:
 					TP._loadedComp[url] = true
 					console.log('loading (again?):', url)
 					
-					//add component to head tag
-					/*var el = document.createElement('link')
-					el.href = url
-					el.rel = 'import'
-					window.document['head'].appendChild(el)*/
 					Polymer.importHref(url, function() {
 						console.log('importHref done')
 						return resolve('OK')
