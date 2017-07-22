@@ -22,10 +22,13 @@ var TP = { //class:
 					//registerComp = function(){} //null function	
 					TP._loadedComp[url] = true
 					console.log('loading (again?):', url)
-					
-					Polymer.importHref(url, function() {
-						console.log('importHref done')
-						return resolve('OK')
+
+					//firefox
+					HTMLImports.whenReady(function() {
+						Polymer.importHref(url, function() {
+							console.log('importHref done')
+							return resolve('OK')
+						})
 					})
 
 					//$here.append(txt)

@@ -22,11 +22,12 @@ options.pretty = true
 
 function pugComp(req,res) {
 	const pgPath = U.getPath(ROOT,req)
+	const ignore = pathContains(pgPath, ServerConfig.PUG_EXCLUDE)
 	const requestedResource = U.replace(pgPath, '.html', '.pug')
-	console.log('requested:'+requestedResource )
 	res.header('Content-Type', 'text/html')
 	U.cacheQuick(res)
-	if (fs.existsSync(requestedResource)) {
+	if (!ignore && fs.existsSync(requestedResource)) {
+		console.log('requested:'+requestedResource )
 		const html = pug.renderFile(requestedResource, options)
 		res.status(200).send( html).end()
 	} else {
@@ -34,6 +35,15 @@ function pugComp(req,res) {
 			res.send(data).end()
 		})
 	}
+}
+
+function pathContains(path, arr)
+{
+	if (!arr) return false
+	for (i = 0; i < arr.length; i++) {
+		if (path.indexOf(arr[i])> -1) return true
+	}
+	return false			
 }
 
 //**************** */
