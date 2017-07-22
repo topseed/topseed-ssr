@@ -3,7 +3,7 @@ const pug = require('pug')
 
 const isj = require('is_js')
 
-const Util = require('topseed-util')
+const Util = require('topseed-utils')
 const U = new Util() 
 
 // ###################### middle filter
