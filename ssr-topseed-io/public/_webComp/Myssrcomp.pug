@@ -1,0 +1,34 @@
+template#xmy-ssrcomp
+	style.
+		#myssrcomp-title {color: orange}
+		my-ssrcomp p {color: blue}
+	span#myssrcomp-title My Title
+	p Hi this is mycomp1
+
+script.
+
+	class MyComp extends HTMLElement {
+
+		static get is() { return 'my-ssrcomp' }
+
+		constructor(){
+			super()
+			console.log('Mycomp constructor')
+		}
+
+		connectedCallback(){
+			console.log('Mycomp connectedCallback')
+			this.innerHTML = document.getElementById('xmy-ssrcomp').innerHTML
+			document.getElementById('mycomp-title').innerHTML = this.getAttribute('title')||document.getElementById('mycomp-title').innerHTML
+		}
+	}
+
+	registerComp = function(){
+		console.log('registerComp contactus')
+		//TW.registerComp('my-comp', MyComp)
+		//window.customElements.define('my-comp', MyComp);
+	}
+
+	customElements.define(MyComp.is, MyComp);
+
+	

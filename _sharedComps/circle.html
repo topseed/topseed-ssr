@@ -1,54 +1,53 @@
 
-<dom-module id="circle-el">
-  <template>
-    <style>.circle-el__title { color: orange; }</style><span class="circle-el__title">My Standard Circle</span>
-    <p></p>
-    <div>
-      <div id="c1"></div>
-    </div>
-  </template>
-  <!--http://github.com/lugolabs/circles-->
-  <script>
-    var circleEl
-    //-class CircleEl extends Polymer.Element {
-    class CircleEl extends HTMLElement {
-    	static get is() { return 'circle-el' }
-    	constructor() {
-    		super()
-    		console.log('CircleEl.constructor')
-    		circleEl = this
-    		TS.load('https://cdn.rawgit.com/topseed/topseed-ssr/master/_sharedComps/vendor/circlesMOD.js')
-    		.then(circleEl.loadedLib)
-    	}
-    	loadedLib() {
-    		if (circleEl._loaded) return
-    		circleEl._loaded = true
-    		console.log('circleEl.loadedlib')
-    		var c = circleEl.$.c1 //access shadow dom
-    		circleEl.circle = Circles.create({
-    			el:                  c,
-    			radius:              60,
-    			value:               42,
-    			maxValue:            100,
-    			width:               10,
-    			text:                function(value){return value + '%';},
-    			colors:              ['#D3B6C6', '#4B253A'],
-    			duration:            400,
-    			wrpClass:            'circles-wrp',
-    			textClass:           'circles-text',
-    			valueStrokeClass:    'circles-valueStroke',
-    			maxValueStrokeClass: 'circles-maxValueStroke',
-    			styleWrapper:        true,
-    			styleText:           true
-    		})
-    	}
-    	init(_blx) {
-    		_blx.on('mySelection', function(data) { //incoming
-    			circleEl.circle.update(data.circleVal)
-    		})
-    	}	
-    }
-    
-    customElements.define(CircleEl.is, CircleEl);	
-  </script>
-</dom-module>
+<template id="xcircle-el">
+  <style>.circle-el__title { color: orange; }</style><span class="circle-el__title">My Standard Circle</span>
+  <p></p>
+  <div>
+    <div id="c1"></div>
+  </div>
+</template>
+<!--http://github.com/lugolabs/circles-->
+<script>
+  var circleEl
+  //-class CircleEl extends Polymer.Element {
+  class CircleEl extends HTMLElement {
+  	static get is() { return 'circle-el' }
+  	constructor() {
+  		super()
+  		console.log('CircleEl.constructor')
+  		circleEl = this
+  		TS.load('https://cdn.rawgit.com/topseed/topseed-ssr/master/_sharedComps/vendor/circlesMOD.js')
+  		.then(function{circleEl.loadedLib()})
+  	}
+  	loadedLib() {
+  		if (circleEl._loaded) return
+  		circleEl._loaded = true
+  		console.log('circleEl.loadedlib')
+  		circleEl.$ = TW.attachShadow(this, '#xcircle-el')
+  		var c = circleEl.$.c1 //access shadow dom
+  		circleEl.circle = Circles.create({
+  			el:                  c,
+  			radius:              60,
+  			value:               42,
+  			maxValue:            100,
+  			width:               10,
+  			text:                function(value){return value + '%';},
+  			colors:              ['#D3B6C6', '#4B253A'],
+  			duration:            400,
+  			wrpClass:            'circles-wrp',
+  			textClass:           'circles-text',
+  			valueStrokeClass:    'circles-valueStroke',
+  			maxValueStrokeClass: 'circles-maxValueStroke',
+  			styleWrapper:        true,
+  			styleText:           true
+  		})
+  	}
+  	init(_blx) {
+  		_blx.on('mySelection', function(data) { //incoming
+  			circleEl.circle.update(data.circleVal)
+  		})
+  	}	
+  }
+  
+  customElements.define(CircleEl.is, CircleEl);	
+</script>
