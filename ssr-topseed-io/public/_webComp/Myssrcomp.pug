@@ -1,7 +1,7 @@
 template#xmy-ssrcomp
 	style.
-		#myssrcomp-title {color: orange}
-		my-ssrcomp p {color: blue}
+		#myssrcomp-title {color: orange;}
+		my-ssrcomp p {color: blue;}
 	span#myssrcomp-title My Title
 	p Hi this is myssrcomp1
 
@@ -20,6 +20,10 @@ script.
 			console.log('Mycomp connectedCallback')
 			this.innerHTML = document.getElementById('xmy-ssrcomp').innerHTML
 			document.getElementById('myssrcomp-title').innerHTML = this.getAttribute('title')||document.getElementById('mycomp-title').innerHTML
+		}
+
+		setTitle(title) {
+			this.setAttribute('title', title)
 		}
 	}
 

@@ -10,13 +10,17 @@ class MySsrComp extends HTMLElement {
 	connectedCallback(){
 		console.log('----Myssrcomp connectedCallback')
 		//this.innerHTML = document.getElementById('xmy-ssrcomp').innerHTML
-		if (!this.shadowRoot) {
-			this.attachShadow({ mode: "open" }).innerHTML = $('#xmy-ssrcomp').html()
-		}
+
+		console.log('title attr:'+this.getAttribute('title')+'*')
+		
 		//this.innerHTML = $('#xmy-ssrcomp').html()
 		//document.getElementById('myssrcomp-title').innerHTML = this.getAttribute('title')||document.getElementById('myssrcomp-title').innerHTML
 		$('#myssrcomp-title').text(this.getAttribute('title')||$('#myssrcomp-title').text())
 		//$('#myssrcomp-title').text(this.getTitle()||$('#myssrcomp-title').text())
+
+		if (!this.shadowRoot) {
+			this.attachShadow({ mode: "open" }).innerHTML = $('#xmy-ssrcomp').html()
+		}
 		
 	}
 }

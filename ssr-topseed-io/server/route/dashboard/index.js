@@ -4,7 +4,7 @@ const router = express.Router()
 const cheerio = require('cheerio')
 const doT = require('dot')
 //const fs = require('fs')
-const components = require("server-components")
+//const components = require("server-components")
 
 require('@skatejs/ssr/register')
 const render = require('@skatejs/ssr')
@@ -33,26 +33,18 @@ router.get('/', function (req, res) {
 
 		console.log('loaded component js on the serverside')
 
-		//global.document = $[0]
+		render(myssrcomp, {debug: true, rehydrate: false}).then(function(value){
+			$ssrcomp = cheerio.load(value)
+			var styleId = $ssrcomp('style').first().attr('id')
+			$ssrcomp('my-ssrcomp').attr('data-style-id', styleId)
+			value = $ssrcomp.html()
 
-		render(myssrcomp).then(function(value){
 			console.log('ssr content'+value)
+			$page('my-ssrcomp').replaceWith(value)
+			//html = html.replace('<my-ssrcomp title="MINE"></my-ssrcomp>', value)
 
-			/*var NewElement = components.newElement()
-			NewElement.createdCallback = function () {
-				this.innerHTML = value
-				console.log('elementCreated callback')
-			}
-			components.registerElement("my-ssrcomp", { prototype: NewElement })*/
-			
-			html = html.replace('<my-ssrcomp></my-ssrcomp>', value)
-			res.status(200).send( html ).end()
-			
-		
-		})/*.then(function(){
-			components.renderPage(html).then(function (output) {
-				res.status(200).send( output ).end()
-		})*/
+			res.status(200).send( $page.html() ).end()
+		})
 
 })
 
