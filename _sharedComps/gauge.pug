@@ -1,46 +1,48 @@
-dom-module(id='gauge-el')
-	template
-		style.
-			.bgauge-el span { color: orange; }
-		.bgauge-el
-			span My Polymer Gauge (Shadow DOM)
-			p
-			div
-				#gauge1
 
-	//http://justgage.com/ 
-	script.
-		var gaugeEl //instance
-		class GaugeEl extends Polymer.Element {
-			static get is() { return 'gauge-el' }
-			constructor() {
-				super()
-				gaugeEl = this
-				console.log('GaugeEl.constructor')
-				Promise.all([
-					TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
-					TS.load('https://cdn.rawgit.com/topseed/topseed-ssr/master/_sharedComps/vendor/justgage.js')
-				]).then(gaugeEl.loadedLib)
-			}
-			loadedLib() {
-				if (gaugeEl._loaded) return
-				gaugeEl._loaded = true
-				console.log('GaugeEl.loadedLib')
+template#xgauge-el
+	style.
+		.bgauge-el span { color: orange; }
+	.bgauge-el
+		span My Standard Gauge (Shadow DOM)
+		p
+		div
+			#gauge1
 
-				var c = gaugeEl.$.gauge1 //access shadow dom
-				gaugeEl.g = new JustGage({ //implementation instance
-					parentNode : c,
-					value: 67, 
-					min: 0,
-					max: 100,
-					title: 'Visitors'
-				})
-			}//loaded
-			init(_blx) {
-				_blx.on('mySelection', function(data) { 
-					gaugeEl.g.refresh(data.gaugeVal)
-				})
-			}
+//http://justgage.com/ 
+script.
+	var gaugeEl //instance
+	class GaugeEl extends Polymer.Element {
+		static get is() { return 'gauge-el' }
+		constructor() {
+			super()
+			gaugeEl = this
+			console.log('GaugeEl.constructor')
+			gaugeEl.shadow = TW.attachShadow(gaugeEl, '#xgauge-el')
+			Promise.all([
+				TS.load('https://cdn.rawgit.com/topseed/topseed-turbo/master/vendor/raphael.min.js'), 
+				TS.load('https://cdn.rawgit.com/topseed/topseed-ssr/master/_sharedComps/vendor/justgage.js')
+			]).then(gaugeEl.loadedLib)
 		}
+		loadedLib() {
+			if (gaugeEl._loaded) return
+			gaugeEl._loaded = true
+			console.log('GaugeEl.loadedLib')
 
-		customElements.define(GaugeEl.is, GaugeEl);	
+			//var c = gaugeEl.$.gauge1 //access shadow dom
+			var c = gaugeEl.shadow.querySelector('#gauge1')
+			gaugeEl.g = new JustGage({ //implementation instance
+				parentNode : c,
+				value: 67, 
+				min: 0,
+				max: 100,
+				title: 'Visitors'
+			})
+		}//loaded
+		init(_blx) {
+			_blx.on('mySelection', function(data) { 
+				gaugeEl.g.refresh(data.gaugeVal)
+			})
+		}
+	}
+
+	customElements.define(GaugeEl.is, GaugeEl)
