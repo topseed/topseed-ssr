@@ -11,7 +11,9 @@ script.
 	var circleEl
 	//-class CircleEl extends Polymer.Element {
 	class CircleEl extends HTMLElement {
+
 		static get is() { return 'circle-el' }
+
 		constructor() {
 			super()
 			console.log('CircleEl.constructor')
@@ -19,6 +21,7 @@ script.
 			TS.load('https://cdn.rawgit.com/topseed/topseed-ssr/master/_sharedComps/vendor/circlesMOD.js')
 			.then(function(){circleEl.loadedLib()})
 		}
+
 		loadedLib() {
 			if (circleEl._loaded) return
 			circleEl._loaded = true
@@ -42,6 +45,7 @@ script.
 				styleText:           true
 			})
 		}
+		
 		init(_blx) {
 			_blx.on('mySelection', function(data) { //incoming
 				circleEl.circle.update(data.circleVal)
