@@ -1,7 +1,7 @@
 
 <dom-module id="circle-el">
   <template>
-    <style>.circle-el__title { color: orange; }</style><span class="circle-el__title">My Polymer Circle</span>
+    <style>.circle-el__title { color: orange; }</style><span class="circle-el__title">My Standard Circle</span>
     <p></p>
     <div>
       <div id="c1"></div>
@@ -10,13 +10,14 @@
   <!--http://github.com/lugolabs/circles-->
   <script>
     var circleEl
-    class CircleEl extends Polymer.Element {
+    //-class CircleEl extends Polymer.Element {
+    class CircleEl extends HTMLElement {
     	static get is() { return 'circle-el' }
     	constructor() {
     		super()
     		console.log('CircleEl.constructor')
     		circleEl = this
-    		TS.load('https://cdn.rawgit.com/topseed/topseed-polymer/master/_sharedComps/vendor/circlesMOD.js')
+    		TS.load('https://cdn.rawgit.com/topseed/topseed-polymer2/master/_sharedComps/vendor/circlesMOD.js')
     		.then(circleEl.loadedLib)
     	}
     	loadedLib() {
