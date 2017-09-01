@@ -26,7 +26,7 @@ block main
 				my-shadow(title='My Custom Shadow Title')
 		.mui-col-xs-6.mui-col-md-3
 			.mui-panel
-				my-ssrcomp(title='My Custom SSR Title')
+				my-ssrcomp
 
 
 	script.
@@ -40,9 +40,10 @@ block main
 				, TP.loadComp('/_polymerComp/List.html')
 				, TW.loadComp('/_webComp/Mycomp.html')
 				, TW.loadComp('/_webComp/Myshadow.html')
-				, TW.loadComp('/_webComp/Myssrcomp.html')
+				//, TW.loadComp('/_webComp/Myssrcomp.html')
 			]).then(function(){
 				const sb = ListBusiness()
+				__ssr_rehydrate()
 				//customElements.define('my-comp', MyComp);
 				sb.addComp('circle-el') //for communication
 				sb.addComp('gauge-el')

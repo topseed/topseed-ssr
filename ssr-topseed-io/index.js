@@ -2,16 +2,16 @@
 //npm install babel-plugin-transform-custom-element-classes
 const express = require('express')
 const server = express()
-
 const cors = require('cors')
 const compression = require('compression')
+const C = (require('./config/ServerConfig'))
+global.ServerConfig = new C()
+const Decider = require('./server/util/Decider')
+
 server.use(cors())
 server.use(compression())
 
-const C = (require('./config/ServerConfig'))
-global.ServerConfig = new C()
-
-const Decider = require('./server/util/Decider')
+server.use('/page/dashboard/', require('./server/route/dashboard/index'))
 
 // ###################### static
 server.use(Decider.decide)

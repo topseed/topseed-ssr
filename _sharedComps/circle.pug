@@ -26,7 +26,7 @@ script.
 			if (circleEl._loaded) return
 			circleEl._loaded = true
 			console.log('circleEl.loadedlib')
-			circleEl.shadow = TW.attachShadow(this, '#xcircle-el')
+			circleEl.shadow = TW.attachShadow(circleEl, '#xcircle-el')
 			var c = circleEl.shadow.querySelector('#c1') //access shadow dom
 			circleEl.circle = Circles.create({
 				el:                  c,
