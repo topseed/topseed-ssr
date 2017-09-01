@@ -1,16 +1,25 @@
-template#mycomp1
+template#xmy-comp
+	style.
+		#mycomp-title {color: orange}
+		my-shadow p {color: blue}
+	span#mycomp-title My Title
 	p Hi this is mycomp1
 
 script.
 
 	class MyComp extends HTMLElement {
+
+		static get is() { return 'my-comp' }
+
 		constructor(){
 			super()
 			console.log('Mycomp constructor')
 		}
+
 		connectedCallback(){
 			console.log('Mycomp connectedCallback')
-			this.innerHTML = document.getElementById('mycomp1').innerHTML
+			this.innerHTML = document.getElementById('xmy-comp').innerHTML
+			document.getElementById('mycomp-title').innerHTML = this.getAttribute('title')||document.getElementById('mycomp-title').innerHTML
 		}
 	}
 
@@ -20,6 +29,6 @@ script.
 		//window.customElements.define('my-comp', MyComp);
 	}
 
-	customElements.define('my-comp', MyComp);
+	customElements.define(MyComp.is, MyComp);
 
 	

@@ -20,10 +20,10 @@ block main
 				gauge-el
 		.mui-col-xs-6.mui-col-md-3
 			.mui-panel
-				my-comp
+				my-comp(title='My Custom Title')
 		.mui-col-xs-6.mui-col-md-3
 			.mui-panel
-				my-shadow
+				my-shadow(title='My Custom Shadow Title')
 
 
 	script.
@@ -32,8 +32,8 @@ block main
 
 			Promise.all([
 				TS.load('/page/list/ListBusiness.js')
-				, TP.loadComp('https://rawgit.com/topseed/topseed-polymer2/master/_sharedComps/circle.html')
-				, TP.loadComp('https://rawgit.com/topseed/topseed-polymer2/master/_sharedComps/gauge.html')
+				, TP.loadComp('https://rawgit.com/topseed/topseed-ssr/master/_sharedComps/circle.html')
+				, TP.loadComp('https://rawgit.com/topseed/topseed-ssr/master/_sharedComps/gauge.html')
 				, TP.loadComp('/_polymerComp/List.html')
 				, TW.loadComp('/_webComp/Mycomp.html')
 				, TW.loadComp('/_webComp/Myshadow.html')
