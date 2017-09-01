@@ -18,6 +18,9 @@ block main
 		.mui-col-xs-12.mui-col-md-6
 			.mui-panel
 				gauge-el
+		.mui-col-xs-6.mui-col-md-3
+			.mui-panel
+				my-comp
 
 
 	script.
@@ -29,8 +32,10 @@ block main
 				, TP.loadComp('https://rawgit.com/topseed/topseed-polymer2/master/_sharedComps/circle.html')
 				, TP.loadComp('https://rawgit.com/topseed/topseed-polymer2/master/_sharedComps/gauge.html')
 				, TP.loadComp('/_polymerComp/List.html')
+				, TW.loadComp('/_webComp/Mycomp.html')
 			]).then(function(){
 				const sb = ListBusiness()
+				//customElements.define('my-comp', MyComp);
 				sb.addComp('circle-el') //for communication
 				sb.addComp('gauge-el')
 				sb.addComp('list-el'); 

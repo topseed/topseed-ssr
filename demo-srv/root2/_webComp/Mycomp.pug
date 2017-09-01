@@ -1,0 +1,25 @@
+template#mycomp1
+	p Hi this is mycomp1
+
+script.
+
+	class MyComp extends HTMLElement {
+		constructor(){
+			super()
+			console.log('Mycomp constructor')
+		}
+		connectedCallback(){
+			console.log('Mycomp connectedCallback')
+			this.innerHTML = document.getElementById('mycomp1').innerHTML
+		}
+	}
+
+	registerComp = function(){
+		console.log('registerComp contactus')
+		//TW.registerComp('my-comp', MyComp)
+		//window.customElements.define('my-comp', MyComp);
+	}
+
+	customElements.define('my-comp', MyComp);
+
+	
