@@ -7,7 +7,7 @@ template#xmy-ssrcomp
 
 script.
 
-	class MyComp extends HTMLElement {
+	class MySsrComp extends HTMLElement {
 
 		static get is() { return 'my-ssrcomp' }
 
@@ -19,16 +19,16 @@ script.
 		connectedCallback(){
 			console.log('Mycomp connectedCallback')
 			this.innerHTML = document.getElementById('xmy-ssrcomp').innerHTML
-			document.getElementById('mycomp-title').innerHTML = this.getAttribute('title')||document.getElementById('mycomp-title').innerHTML
+			document.getElementById('myssrcomp-title').innerHTML = this.getAttribute('title')||document.getElementById('mycomp-title').innerHTML
 		}
 	}
 
 	registerComp = function(){
 		console.log('registerComp contactus')
-		//TW.registerComp('my-comp', MyComp)
-		//window.customElements.define('my-comp', MyComp);
+		//TW.registerComp('my-comp', MySsrComp)
+		//window.customElements.define('my-comp', MySsrComp);
 	}
 
-	customElements.define(MyComp.is, MyComp);
+	customElements.define(MySsrComp.is, MySsrComp);
 
 	
