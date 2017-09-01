@@ -1,4 +1,6 @@
-template#myshadow1
+template#xmy-shadow
+	style.
+		my-shadow p {color: green}
 	p Hi this is myshadow1
 
 script.
@@ -9,17 +11,18 @@ script.
 			console.log('Myshadow constructor')
 		}
 		connectedCallback(){
-			console.log('Mysahdow connectedCallback')
-			this.innerHTML = document.getElementById('myshadow1').innerHTML
+			console.log('Myshadow connectedCallback')
+			//this.innerHTML = document.getElementById('xmy-shadow').innerHTML
+			TW.attachShadow(this, '#xmy-shadow')
 		}
 	}
 
 	registerComp = function(){
-		console.log('registerComp contactus')
+		console.log('registerComp Myshadow')
 		//TW.registerComp('my-comp', MyShadow)
 		//window.customElements.define('my-comp', MyShadow);
 	}
 
-	customElements.define('my-comp', MyShadow);
+	customElements.define('my-shadow', MyShadow);
 
 	

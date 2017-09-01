@@ -21,6 +21,9 @@ block main
 		.mui-col-xs-6.mui-col-md-3
 			.mui-panel
 				my-comp
+		.mui-col-xs-6.mui-col-md-3
+			.mui-panel
+				my-shadow
 
 
 	script.
@@ -33,6 +36,7 @@ block main
 				, TP.loadComp('https://rawgit.com/topseed/topseed-polymer2/master/_sharedComps/gauge.html')
 				, TP.loadComp('/_polymerComp/List.html')
 				, TW.loadComp('/_webComp/Mycomp.html')
+				, TW.loadComp('/_webComp/Myshadow.html')
 			]).then(function(){
 				const sb = ListBusiness()
 				//customElements.define('my-comp', MyComp);
