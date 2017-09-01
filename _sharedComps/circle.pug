@@ -17,7 +17,7 @@ script.
 			console.log('CircleEl.constructor')
 			circleEl = this
 			TS.load('https://cdn.rawgit.com/topseed/topseed-ssr/master/_sharedComps/vendor/circlesMOD.js')
-			.then(function{circleEl.loadedLib()})
+			.then(function(){circleEl.loadedLib()})
 		}
 		loadedLib() {
 			if (circleEl._loaded) return
