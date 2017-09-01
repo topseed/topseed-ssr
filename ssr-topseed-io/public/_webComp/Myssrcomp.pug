@@ -2,37 +2,11 @@ template#xmy-ssrcomp
 	style.
 		#myssrcomp-title {color: orange;}
 		my-ssrcomp p {color: blue;}
+		p {-webkit-margin-before: 0}
 	span#myssrcomp-title My Title
 	p Hi this is myssrcomp1
 
+//-use ff for client-side functionality
 script.
+	import ../../server/ssrComp/Myssrcomp.js
 
-	class MySsrComp extends HTMLElement {
-
-		static get is() { return 'my-ssrcomp' }
-
-		constructor(){
-			super()
-			console.log('Mycomp constructor')
-		}
-
-		connectedCallback(){
-			console.log('Mycomp connectedCallback')
-			this.innerHTML = document.getElementById('xmy-ssrcomp').innerHTML
-			document.getElementById('myssrcomp-title').innerHTML = this.getAttribute('title')||document.getElementById('mycomp-title').innerHTML
-		}
-
-		setTitle(title) {
-			this.setAttribute('title', title)
-		}
-	}
-
-	registerComp = function(){
-		console.log('registerComp contactus')
-		//TW.registerComp('my-comp', MySsrComp)
-		//window.customElements.define('my-comp', MySsrComp);
-	}
-
-	customElements.define(MySsrComp.is, MySsrComp);
-
-	
