@@ -11,7 +11,7 @@ server.use(compression())
 const C = (require('./config/ServerConfig'))
 global.ServerConfig = new C()
 
-const Decider = require('./utils/Decider')
+const Decider = require('./server/util/Decider')
 
 // ###################### static
 server.use(Decider.decide)

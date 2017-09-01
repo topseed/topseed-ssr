@@ -1,0 +1,25 @@
+template#myshadow1
+	p Hi this is myshadow1
+
+script.
+
+	class MyShadow extends HTMLElement {
+		constructor(){
+			super()
+			console.log('Myshadow constructor')
+		}
+		connectedCallback(){
+			console.log('Mysahdow connectedCallback')
+			this.innerHTML = document.getElementById('myshadow1').innerHTML
+		}
+	}
+
+	registerComp = function(){
+		console.log('registerComp contactus')
+		//TW.registerComp('my-comp', MyShadow)
+		//window.customElements.define('my-comp', MyShadow);
+	}
+
+	customElements.define('my-comp', MyShadow);
+
+	
