@@ -35,23 +35,23 @@ block main
 
 			Promise.all([
 				TW.rehydrate('my-ssrcomp')
+				, TW.rehydrate('list-el')
 			]).then(function(){
 				return Promise.all([
 					TS.load('/page/list/ListBusiness.js')
 					, TW.loadComp('https://rawgit.com/topseed/topseed-ssr/master/_sharedComps/circle.html')
 					, TW.loadComp('https://rawgit.com/topseed/topseed-ssr/master/_sharedComps/gauge.html')
-					, TW.loadComp('/_webComp/List.html')
+					//, TW.loadComp('/_webComp/List.html')
 					, TW.loadComp('/_webComp/Mycomp.html')
 					, TW.loadComp('/_webComp/Myshadow.html')
 					//, TW.loadComp('/_webComp/Myssrcomp.html') //see rehydrate above
 				])
 			}).then(function(){
 				const sb = ListBusiness()
-				//customElements.define('my-comp', MyComp);
 				sb.addComp('circle-el') //for communication
 				sb.addComp('gauge-el')
-				sb.addComp('list-el'); 
-				sb.compList('list-el')
+				//sb.addComp('list-el');  //ssr for now, TBD
+				//sb.compList('list-el')
 			})
 		}
 

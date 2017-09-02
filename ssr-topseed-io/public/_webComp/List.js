@@ -13,19 +13,33 @@ class ListEl extends HTMLElement {
 		console.log('============ListEl connectedCallback'+this.getAttribute('title')+'*')
 
 		listEl = this
-		listEl.shadow = TW.attachShadow(listEl, '#xlist-el')
+		//listEl.shadow = TW.attachShadow(listEl, '#xlist-el')
 		listEl.blx = null
-		this.shadow.querySelector('#title').innerHTML = this.getAttribute('title') || this.shadow.querySelector('#title').innerHTML
-		//$('#listel-title').text(this.getAttribute('title')||$('#listel-title').text())
+		//this.shadowRoot.querySelector('#title').innerHTML = this.getAttribute('title') || this.shadow.querySelector('#title').innerHTML
+		$('#listel-title').text(this.getAttribute('title')||$('#listel-title').text())
+	
+		if (!this.shadowRoot) {
+			this.attachShadow({ mode: "open" }).innerHTML = $('#xlist-el').html()
+		}
+
+		//$('#listel-title').text(this.getAttribute('title')||$('#listel-title').text()) //doesn't work
+		
 	}
 
-	list(values) {
-		console.log('ListEl.list')
-		var tpl = document.getElementById('ListTemplate').text
-		var data2 = {'array': values}
-		var res = TW.bind(tpl, data2)
-		var lst = listEl.shadow.querySelector('#myList') 
-		lst.innerHTML = res
+	list(values, doT) {
+		console.log('=================ListEl.list')
+		var templateId = '#ListTemplate'
+		var listId = '#myList'
+		var templateText = $(templateId).text(); $(templateId).remove()
+		var templateFunction = doT.template(templateText)
+
+		//console.log('output:'+templateFunction({'array': values}))
+
+		//bind to element in shadow DOM
+		//$('list-el').shadowRoot.getElementById("mylist").innerHTML = templateFunction({'array': values})
+		$(listId).html(templateFunction({'array': values}))
+
+
 	}
 
 	init(_blx) {

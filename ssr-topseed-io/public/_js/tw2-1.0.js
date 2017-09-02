@@ -167,3 +167,6 @@ function __ssr_rehydrate(){
 		e.textContent=document.getElementById(t.getAttribute("data-style-id")).textContent,
 		t.parentNode.replaceChild(e,t)}
 */
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
+	module.exports = TW
