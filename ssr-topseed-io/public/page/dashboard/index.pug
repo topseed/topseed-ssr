@@ -23,7 +23,7 @@ block main
 				circle-el
 		.mui-col-xs-6.mui-col-md-3
 			.mui-panel
-				list-el
+				list-el(title='My Custom List Title')
 		.mui-col-xs-12.mui-col-md-6
 			.mui-panel
 				gauge-el
@@ -40,10 +40,10 @@ block main
 					TS.load('/page/list/ListBusiness.js')
 					, TW.loadComp('https://rawgit.com/topseed/topseed-ssr/master/_sharedComps/circle.html')
 					, TW.loadComp('https://rawgit.com/topseed/topseed-ssr/master/_sharedComps/gauge.html')
-					, TP.loadComp('/_polymerComp/List.html')
+					, TW.loadComp('/_webComp/List.html')
 					, TW.loadComp('/_webComp/Mycomp.html')
 					, TW.loadComp('/_webComp/Myshadow.html')
-					//, TW.loadComp('/_webComp/Myssrcomp.html')
+					//, TW.loadComp('/_webComp/Myssrcomp.html') //see rehydrate above
 				])
 			}).then(function(){
 				const sb = ListBusiness()
