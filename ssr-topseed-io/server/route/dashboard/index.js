@@ -12,11 +12,13 @@ const render = require('@skatejs/ssr')
 const Util = require('topseed-utils')
 const U = new Util()
 const ROOT = './' + ServerConfig.WEBROOT
+const COMP_PATH = '../../.'+ROOT+'/_webComp/'
 
 const requestedResource = ROOT + '/page/dashboard/index.pug'
 
+
 //component class
-const Myssrcomp = require("../../ssrComp/Myssrcomp")
+const Myssrcomp = require(COMP_PATH+'Myssrcomp') //.js
 
 router.get('/', function (req, res) {
 	
@@ -30,7 +32,7 @@ router.get('/', function (req, res) {
 
 		var myssrcomp = new Myssrcomp()
 		//copy attributes
-		var comptag = $page('my-ssrcomp').get(0)
+		var comptag = $page('my-ssrcomp').get(0) //one component with this namee per page
 		for (var name in comptag.attribs) { //cheerio
 			myssrcomp.setAttribute(name, comptag.attribs[name])
 		}
@@ -44,6 +46,9 @@ router.get('/', function (req, res) {
 			var styleId = $ssrcomp('style').first().attr('id')
 			$ssrcomp('my-ssrcomp').attr('data-style-id', styleId)
 			$page('my-ssrcomp').replaceWith($ssrcomp.html())
+			return Promise.resolve()
+			
+		}).then(function(){
 			res.status(200).send( $page.html() ).end()
 		})
 
