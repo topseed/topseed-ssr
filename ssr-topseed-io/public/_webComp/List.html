@@ -1,0 +1,28 @@
+<style id="__style_0">
+	.blist-el0 span,
+	.blist-el0 li {
+		color: orange;
+	}
+
+	#listel-title {
+		color: orange;
+	}
+
+	.blist-el0 a {
+		cursor: pointer;
+		color: #2196F3
+	}
+</style>
+<list-el title="My Custom List Title">
+	<shadow-root>
+		<div class="blist-el0"><span id="listel-title">My Custom List Title</span>
+			<div id="myList">
+				<ul>
+					<li><a onclick="return listEl.nav('http://www.yahoo.com','47','27')"> Yahoo</a></li>
+					<li><a onclick="return listEl.nav('http://mail.google.com','23','88')"> Gmail</a></li>
+					<li><a onclick="return listEl.nav('https://www.cnet.com/news/','35','55')"> News</a></li>
+				<ul>
+			</div>
+		</div>
+	</shadow-root>
+</list-el>

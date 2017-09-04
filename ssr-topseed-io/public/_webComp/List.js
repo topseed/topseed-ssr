@@ -9,21 +9,21 @@ class ListEl extends HTMLElement {
 		console.log('============ListEl constructor')
 	}
 
+	render() {
+		console.log('List render')
+		this.innerHTML = $('#xlist-el').html()
+		console.log(this.innerHTML)
+	}
+
 	connectedCallback() {
 		console.log('============ListEl connectedCallback'+this.getAttribute('title')+'*')
 
 		listEl = this
-		//listEl.shadow = TW.attachShadow(listEl, '#xlist-el')
-		listEl.blx = null
-		//this.shadowRoot.querySelector('#title').innerHTML = this.getAttribute('title') || this.shadow.querySelector('#title').innerHTML
+		//listEl.blx = null
 		$('#listel-title').text(this.getAttribute('title')||$('#listel-title').text())
 	
-		if (!this.shadowRoot) {
-			this.attachShadow({ mode: "open" }).innerHTML = $('#xlist-el').html()
-		}
-
-		//$('#listel-title').text(this.getAttribute('title')||$('#listel-title').text()) //doesn't work
-		
+		//no need to use Shadow DOM server-side, using <shadow-dom> marker element in HTML instead
+		this.innerHTML = $('#xlist-el').html() //last thing before ssr render
 	}
 
 	list(values, doT) {
@@ -35,9 +35,10 @@ class ListEl extends HTMLElement {
 
 		//console.log('output:'+templateFunction({'array': values}))
 
-		//bind to element in shadow DOM
 		//$('list-el').shadowRoot.getElementById("mylist").innerHTML = templateFunction({'array': values})
 		$(listId).html(templateFunction({'array': values}))
+
+		console.log('==============done listEl.list')
 
 
 	}

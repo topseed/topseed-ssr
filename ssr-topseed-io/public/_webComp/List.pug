@@ -1,9 +1,8 @@
 template#xlist-el
-	style.
-		.blist-el span, .blist-el li { color: orange; }
-		#title { color: orange; }
-		.blist-el a { cursor: pointer; color: #2196F3}
-	.blist-el
+	style#__style_0.
+		#listel-title { color: orange; }
+		#myList a { cursor: pointer; color: #2196F3}
+	shadow-root
 		span#listel-title My List Title
 		#myList
 
@@ -14,5 +13,5 @@ script#ListTemplate(type='text/x-dot-template').
 	{{~}}
 	<ul>
 //-http://www.javascriptoo.com/dot-js
-script
+//-script
 	include List.js

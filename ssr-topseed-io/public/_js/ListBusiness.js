@@ -50,16 +50,20 @@ function ListBusiness() {// 'closure|module'-iso.
 
 		, ssrCompList: function(comp, doT) {
 			//if (1==1) return
-			sb.siteListDao.selectList().then(function(values) {
+			console.log('ssrCompList')
+			return new Promise(function (resolve, reject){
 
+				sb.siteListDao.selectList().then(function(values) {
+					console.log('got results')
 					// var comp = document.querySelector(componentName) //good if only one
 					console.log('got component'+comp)
 					comp.list(values, doT)
+					return resolve()
 
 				}).catch(function(error) {
 					console.log('ListBusiness.selectList error: '+error.message);
-				}
-			) 
+				})
+			}) 
 		}
 
 

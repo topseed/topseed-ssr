@@ -7,6 +7,10 @@ class MySsrComp extends HTMLElement {
 		console.log('============Myssrcomp constructor')
 	}
 
+	render() {
+		this.innerHTML = $('#xmy-ssrcomp').html()
+	}
+
 	connectedCallback(){
 		console.log('============Myssrcomp connectedCallback')
 
@@ -14,7 +18,8 @@ class MySsrComp extends HTMLElement {
 		$('#myssrcomp-title').text(this.getAttribute('title')||$('#myssrcomp-title').text())
 
 		if (!this.shadowRoot) {
-			this.attachShadow({ mode: "open" }).innerHTML = $('#xmy-ssrcomp').html()
+			//this.attachShadow({ mode: "open" }).innerHTML = $('#xmy-ssrcomp').html()
+			this.innerHTML = $('#xmy-ssrcomp').html()
 		}
 	}
 }

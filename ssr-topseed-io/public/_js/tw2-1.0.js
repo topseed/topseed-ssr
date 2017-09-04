@@ -122,13 +122,17 @@ var TW = { //class:
 
 	, rehydrate: function(querySelector){
 		return new Promise(function (resolve, reject){
-			console.log()
+			console.log('=============rehydrating')
 			var t = document.querySelector(querySelector) //component
-			,e=t.firstChild ////root (shadow)
+			//,e=t.firstChild ////root (shadow)
+			,e = document.querySelector(querySelector+' shadow-root')
 			,n=function(r,e){
 				for (;r&&r.firstChild;)
 					e.appendChild(r.firstChild)
 			};
+			console.log('t'+t.getAttribute('title'))
+			//console.log('e'+e.getAttribute('id'))
+			
 			t.removeChild(e)
 			var o=t.attachShadow({mode:"open"})
 			n(e,o)
