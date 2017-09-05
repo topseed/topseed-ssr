@@ -34,23 +34,23 @@ block main
 		function UIinit() {
 
 			Promise.all([
-				TW.rehydrate('my-ssrcomp')
-				, TW.rehydrate('list-el')
+				TW.rehydrate('my-ssrcomp') //Server-side component
+				, TW.rehydrate('list-el') //Hybrid component
 			]).then(function(){
 				return Promise.all([
 					TS.load('/page/list/ListBusiness.js')
 					, TW.loadComp('https://rawgit.com/topseed/topseed-ssr/master/_sharedComps/circle.html')
 					, TW.loadComp('https://rawgit.com/topseed/topseed-ssr/master/_sharedComps/gauge.html')
-					//, TW.loadComp('/_webComp/List.html')
-					, TW.loadComp('/_webComp/Mycomp.html')
-					, TW.loadComp('/_webComp/Myshadow.html')
-					//, TW.loadComp('/_webComp/Myssrcomp.html') //see rehydrate above
+					//, TW.loadComp('/_webComp/Myssrcomp.html') //only uses rehydrate above
+					, TW.loadComp('/_webComp/List.js') //Hybrid components
+					, TW.loadComp('/_webComp/Mycomp.html') //Client-side component
+					, TW.loadComp('/_webComp/Myshadow.html') //Client-side component
 				])
 			}).then(function(){
 				const sb = ListBusiness()
 				sb.addComp('circle-el') //for communication
 				sb.addComp('gauge-el')
-				//sb.addComp('list-el');  //ssr for now, TBD
+				sb.addComp('list-el');  //for communication
 				//sb.compList('list-el')
 			})
 		}

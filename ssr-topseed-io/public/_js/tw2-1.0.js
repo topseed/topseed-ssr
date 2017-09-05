@@ -22,6 +22,10 @@ var TW = { //class:
 					registerComp = function(){} //null function	
 					TW._loadedComp[url] = true
 					console.log('loading 1, if error in IE, then not es5:', url)
+
+					if (url.indexOf('.js')>-1)
+						txt = '<script>'+txt+'</script>'
+
 					if ($here) {
 						$here.append(txt)
 					} else {

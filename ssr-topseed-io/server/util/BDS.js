@@ -75,7 +75,7 @@ Class.extend = function(prop) {
 var BDS = Class.extend({ //IE11-compatible base class for Data Access Object
 
 	init: function(_urlSpec) {
-		console.log('BDS init')
+		//console.log('BDS init')
 		this.urlSpec = _urlSpec
 		//if (typeof window !== 'undefined')
 		//	this.fetch_ = window.fetch // Bsr - browser side
@@ -86,7 +86,7 @@ var BDS = Class.extend({ //IE11-compatible base class for Data Access Object
 	, selectList: function(data, token) {
 		return BDS._get(this.fetch_, this.urlSpec.root, this.urlSpec.selectList, data, token)
 			.then(function(values) { 
-				console.log(JSON.stringify(values))
+				//console.log(JSON.stringify(values))
 				return values
 		})
 	}//selectList
@@ -95,13 +95,13 @@ var BDS = Class.extend({ //IE11-compatible base class for Data Access Object
 		if (!this.urlSpec.update) throw 'urlspec.update not defined'
 		return BDS._post(this.fetch_, this.urlSpec.root, this.urlSpec.update, data, token)
 			.then(function(value) { 
-				console.log(JSON.stringify(value))
+				//console.log(JSON.stringify(value))
 				return value
 		})
 	}//update
 
 	, _get: function(fetch_, ROOT_, url_, payload, jtoken ) {
-		console.log('fetching ', url_, payload, jtoken)
+		//console.log('fetching ', url_, payload, jtoken)
 		//convert payload to query string	
 		var url = ROOT_ + url_;
 		var queryString = BDS._objectToQueryString(payload)
@@ -119,7 +119,7 @@ var BDS = Class.extend({ //IE11-compatible base class for Data Access Object
 				}
 				//no body for get
 			}).then(function(response) { //2: returns a promise
-				console.log(response.headers)
+				//console.log(response.headers)
 
 				if (!response.ok) {
 					console.log('not ok')

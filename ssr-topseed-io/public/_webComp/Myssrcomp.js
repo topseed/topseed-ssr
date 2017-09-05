@@ -4,15 +4,11 @@ class MySsrComp extends HTMLElement {
 
 	constructor(){
 		super()
-		console.log('============Myssrcomp constructor')
-	}
-
-	render() {
-		this.innerHTML = $('#xmy-ssrcomp').html()
+		//console.log('============Myssrcomp constructor')
 	}
 
 	connectedCallback(){
-		console.log('============Myssrcomp connectedCallback')
+		//console.log('============Myssrcomp connectedCallback')
 
 		//document.getElementById('myssrcomp-title').innerHTML = this.getAttribute('title')||document.getElementById('myssrcomp-title').innerHTML
 		$('#myssrcomp-title').text(this.getAttribute('title')||$('#myssrcomp-title').text())
