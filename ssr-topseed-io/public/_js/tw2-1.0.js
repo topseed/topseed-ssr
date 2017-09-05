@@ -129,6 +129,7 @@ var TW = { //class:
 			console.log('=============rehydrating')
 			var t = document.querySelector(querySelector) //component
 			//,e=t.firstChild ////root (shadow)
+			console.log('querySelector '+querySelector+' shadow-root')
 			,e = document.querySelector(querySelector+' shadow-root')
 			,n=function(r,e){
 				for (;r&&r.firstChild;)

@@ -17,16 +17,16 @@ block main
 				list-el(title='My SSR List Title')
 		.mui-col-xs-6.mui-col-md-3
 			.mui-panel
-				my-comp(title='My Custom Title')
-		.mui-col-xs-6.mui-col-md-3
-			.mui-panel
-				my-shadow(title='My Custom Shadow Title')
-		.mui-col-xs-6.mui-col-md-3
-			.mui-panel
 				circle-el
 		.mui-col-xs-12.mui-col-md-6
 			.mui-panel
 				gauge-el
+		.mui-col-xs-6.mui-col-md-3
+			.mui-panel
+				my-comp(title='My Custom Title')
+		.mui-col-xs-6.mui-col-md-3
+			.mui-panel
+				my-shadow(title='My Custom Shadow Title')
 
 
 	script.
@@ -34,8 +34,8 @@ block main
 		function UIinit() {
 
 			Promise.all([
-				TW.rehydrate('my-ssrcomp') //Server-side component
-				, TW.rehydrate('list-el') //Hybrid component
+				//TW.rehydrate('my-ssrcomp') //Server-side component
+				TW.rehydrate('list-el') //Hybrid component
 			]).then(function(){
 				return Promise.all([
 					TS.load('/page/list/ListBusiness.js')

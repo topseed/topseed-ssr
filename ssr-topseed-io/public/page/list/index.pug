@@ -9,23 +9,15 @@ block main
 		p
 		p List as component:
 
-		list-el loading...
+		list-el(title='List title') loading...
 
 	script.
-		TS.loadOnAppReady('/page/list/ListBusiness.js', loadComps) 
+		TS.onAppReady(UIinit) 
 
 		function UIinit() { 
-			
-			const sb = ListBusiness()
-			//sb.addComp('list-el') //if component communicates
-			sb.compList('list-el')
-		}//()
-
-		function loadComps() {
-			TW.loadComp('/_webComp/List.html').then(UIinit)
-		}//()
-
-
+			TW.rehydrate('list-el') 
+			.then(function(){TW.loadComp('/_webComp/List.js')})
+		}
 
 block footer
 	include ../../_part/_footer

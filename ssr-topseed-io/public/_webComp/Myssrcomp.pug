@@ -1,14 +1,12 @@
 template#xmy-ssrcomp
 	style.
 		#myssrcomp-title {color: orange;}
-		my-ssrcomp p {color: blue;}
 		p {-webkit-margin-before: 0}
-	//-my-ssrcomp(title="My SSR Title0")
 	shadow-root
 		span#myssrcomp-title My Title
 		p Hi this is myssrcomp1
 
-//-use ff for client-side functionality
+//-separate file for SSR+client-side functionality
 //-script
 	include Myssrcomp.js
 

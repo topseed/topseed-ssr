@@ -20,14 +20,14 @@ COMP_PATH = '../../.'+PUG_PATH
 
 //require('../../.'+ROOT+'/_js/tw2-1.0.js')
 
-const requestedResource = ROOT + '/page/dashboard/index.pug'
+const requestedResource = ROOT + '/page/list/index.pug'
 
 const ListBusiness = require('../../.'+ROOT+'/_js/ListBusiness')
 const sb = ListBusiness()
 sb.urlSpec = {root:'http://127.0.0.1:'+ServerConfig.WWW_PORT, selectList: '/page/list/dummy.json'}
 
 
-const compFiles = ['Myssrcomp', 'List']
+const compFiles = ['List']
 
 router.get('/', function (req, res) {
 	

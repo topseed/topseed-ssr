@@ -11,15 +11,20 @@ class ListEl extends HTMLElement {
 
 	connectedCallback() {
 		//console.log('============ListEl connectedCallback'+this.getAttribute('title')+'*')
-
 		listEl = this
-		//listEl.blx = null
-		if (!this.shadowRoot) //ssr render
+
+		if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') //SSR
 		{
 			$('#listel-title').text(this.getAttribute('title')||$('#listel-title').text())
 			//no need to use Shadow DOM server-side, using <shadow-dom> marker element in HTML instead
 			this.innerHTML = $('#xlist-el').html() //last thing before ssr render
 		}
+		else //client-side render
+		{
+			//console.log('=========List clientside processing')
+			//here do nothing as content is already there
+		}
+		
 	}
 
 	list(values, doT) {

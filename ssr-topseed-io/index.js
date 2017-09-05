@@ -12,6 +12,7 @@ server.use(cors())
 server.use(compression())
 
 server.use('/page/dashboard/', require('./server/route/dashboard/index'))
+server.use('/page/list/', require('./server/route/list/index'))
 
 // ###################### static
 server.use(Decider.decide)
