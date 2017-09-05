@@ -17,10 +17,12 @@ script.
 
 		connectedCallback(){
 			console.log('Mycomp connectedCallback')
-			this.innerHTML = document.getElementById('xmy-comp').innerHTML
+
 			//this.innerHTML = $('#xmy-comp').html()
-			document.getElementById('mycomp-title').innerHTML = this.getAttribute('title')||document.getElementById('mycomp-title').innerHTML
+			this.innerHTML = document.getElementById('xmy-comp').innerHTML
+
 			//$('#mycomp-title').text(this.getAttribute('title')||$('#mycomp-title').text())
+			document.getElementById('mycomp-title').innerHTML = this.getAttribute('title')||document.getElementById('mycomp-title').innerHTML
 		}
 	}
 
