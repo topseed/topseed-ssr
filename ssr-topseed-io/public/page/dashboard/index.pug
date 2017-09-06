@@ -35,7 +35,7 @@ block main
 
 			Promise.all([
 				TW.rehydrate('my-ssrcomp') //Server-side component
-				TW.rehydrate('list-el') //Hybrid component
+				, TW.rehydrate('list-el') //Hybrid component
 			]).then(function(){
 				return Promise.all([
 					TS.load('/page/list/ListBusiness.js')
@@ -51,7 +51,7 @@ block main
 				sb.addComp('circle-el') //for communication
 				sb.addComp('gauge-el')
 				sb.addComp('list-el');  //for communication
-				//sb.compList('list-el')
+				//sb.compList('list-el') //Done server-side
 			})
 		}
 
