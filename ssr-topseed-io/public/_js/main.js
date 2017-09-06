@@ -13,7 +13,7 @@ var TM = {
 			, TS.load('/_js/tp2-1.0.js') //Late-loader Helper for Polymer 2 components
 			, TS.load('/bower_components/webcomponentsjs/webcomponents-lite.js') //Polymer Polyfills
 			//, TS.load('/bower_components/webcomponentsjs/custom-elements-es5-adapter.js') //use when downcompiling
-			, TS.load('/bower_components/polymer/polymer.html') //Support for Polymer (2.0.0)
+			//, TS.load('/bower_components/polymer/polymer.html') //Support for Polymer (2.0.0)
 			//, TS.load('//cdn.jsdelivr.net/riot/3.4.4/riot+compiler.min.js') //Support for RIOT
 			, TS.load('//rawgit.com/topseed/topseed-turbo/master/release/topseed-turbo-latest.js')
 			, TS.load('/_js/BLX.js')

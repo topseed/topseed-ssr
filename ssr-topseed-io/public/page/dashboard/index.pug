@@ -34,7 +34,7 @@ block main
 		function UIinit() {
 
 			Promise.all([
-				//TW.rehydrate('my-ssrcomp') //Server-side component
+				TW.rehydrate('my-ssrcomp') //Server-side component
 				TW.rehydrate('list-el') //Hybrid component
 			]).then(function(){
 				return Promise.all([
