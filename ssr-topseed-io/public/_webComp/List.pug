@@ -12,5 +12,7 @@ script#ListTemplate(type='text/x-dot-template').
 		<li><a onclick="return listEl.nav('{{=value.url}}','{{=value.circleVal}}','{{=value.gaugeVal}}')"> {{=value.head_line}}</a></li>
 	{{~}}
 	<ul>
+
+//-separate file for SSR+client-side functionality
 //-script
 	include List.js

@@ -24,7 +24,6 @@ class ListEl extends HTMLElement {
 			//console.log('=========List clientside processing')
 			//here do nothing as content is already there
 		}
-		
 	}
 
 	list(values, doT) {

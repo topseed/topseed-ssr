@@ -154,9 +154,8 @@ var TW = { //class:
 		console.log('TW.restyle')
 		var e=document.createElement('style')
 		var styles = document.getElementById(t.getAttribute('data-style-id')).textContent
-		e.textContent = styles //.replace(/opacity: 0;/g, '')
-		console.log('style'+styles)
-		o.prepend(e)
+		e.textContent = styles
+		o.insertBefore(e, o.firstChild)
 	}
 }
 
