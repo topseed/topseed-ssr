@@ -1,6 +1,6 @@
 function ListBusiness() {// 'closure|module'-iso.
 
-	const urlSpec = {root:'https://ssr.topseed.io', selectList: '/page/list/dummy.json'}
+	const urlSpec = {root:'http://127.0.0.1:9081', selectList: '/page/list/dummy.json'}
 
 	var SiteListDao = BDS.extend({})
 	
