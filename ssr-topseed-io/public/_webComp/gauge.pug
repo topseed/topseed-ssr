@@ -1,4 +1,3 @@
-
 template#xgauge-el
 	style.
 		.bgauge-el span { color: orange; }
@@ -11,7 +10,7 @@ template#xgauge-el
 //http://justgage.com/ 
 script.
 	var gaugeEl //instance
-	class GaugeEl extends Polymer.Element {
+	class GaugeEl extends HTMLElement {
 		static get is() { return 'gauge-el' }
 		constructor() {
 			super()

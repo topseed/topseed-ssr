@@ -1,10 +1,10 @@
 {
-	"name": "topseed-webcomps",
-	"description": "Best Practices for Web Components",
+	"name": "topseed-ssr",
+	"description": "SSR Web Components",
 	"version": "1.0.1",
 	"repository": {
 			"type": "git",
-			"url": "https://github.com/topseed/topseed-webcomps.git"
+			"url": "https://github.com/topseed/topseed-ssr.git"
 	},
 	"license": "SEE LICENSE IN LICENSE.md",
 	"engines": {
@@ -12,7 +12,7 @@
 			"node": ">=8.1"
 	},
 	"scripts": {
-			"run": "node main"
+			"start": "node index"
 	},
 	"dependencies": {
 			"body-parser": ">=1.1",
